@@ -27,13 +27,12 @@ namespace email_api.Controllers
                 return BadRequest("A chave é obrigatória.");
             }
 
-            // Verifique se a chave fornecida é igual à chave constante
             if (request.Key != RequiredKey)
             {
                 return BadRequest("Chave inválida.");
             }
 
-            var emails = GetEmails(); // Chame o método sem argumentos
+            var emails = GetEmails(); 
             return Ok(emails);
         }
 
@@ -44,7 +43,7 @@ namespace email_api.Controllers
                 new Email
                 {
                     Remetente = "joao.silva@example.com",
-                    Destinatario = "maria.souza@example.com",
+                    Destinatario = "kamilly.souza@example.com",
                     Assunto = "Reunião de Projeto",
                     Conteudo = "Olá Maria, gostaria de confirmar a reunião para amanhã às 10h.",
                     DataHora = "2024-09-17 09:00"
@@ -68,7 +67,7 @@ namespace email_api.Controllers
                 new Email
                 {
                     Remetente = "patricia.oliveira@example.com",
-                    Destinatario = "giovana.pereira@example.com",
+                    Destinatario = "Samara.pereira@example.com",
                     Assunto = "Documentos Necessários",
                     Conteudo = "Giovana, por favor, veja os documentos anexos.",
                     DataHora = "2024-09-17 12:00"
@@ -76,14 +75,14 @@ namespace email_api.Controllers
                 new Email
                 {
                     Remetente = "felipe.silva@example.com",
-                    Destinatario = "andreia.oliveira@example.com",
+                    Destinatario = "Raphael.oliveira@example.com",
                     Assunto = "Reunião de Equipe",
                     Conteudo = "Andréia, confirmo a reunião de equipe para amanhã.",
                     DataHora = "2024-09-17 13:00"
                 }
             };
 
-            // Retorna os primeiros 5 emails, se houver menos que 5, retornará todos
+
             return emails.Take(5).ToList();
         }
     }

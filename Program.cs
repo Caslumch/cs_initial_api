@@ -2,6 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MongoDB.Driver; // Adicione o namespace MongoDB.Driver
 using email_api.Models; // Substitua pelo namespace correto dos seus modelos
+using email_api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,9 @@ builder.Services.AddControllers();
 // Configura o cliente MongoDB
 var mongoConnectionString = builder.Configuration.GetConnectionString("MongoDB");
 builder.Services.AddSingleton<IMongoClient>(new MongoClient(mongoConnectionString));
+
+// Registra o UserService
+builder.Services.AddSingleton<UserService>();
 
 // Adiciona suporte a documentação Swagger
 builder.Services.AddEndpointsApiExplorer();
