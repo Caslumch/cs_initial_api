@@ -9,7 +9,7 @@ namespace SeuNamespace.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] ColorRequest request)
         {
-            // Adicione condições com base nos dados recebidos
+            
             if (request == null)
             {
                 return BadRequest("Dados inválidos.");
@@ -20,7 +20,7 @@ namespace SeuNamespace.Controllers
                 return BadRequest("O nome da cor é obrigatório.");
             }
 
-            // Processar os dados
+           
             string responseMessage = $"A cor {request.ColorName} tem intensidade {request.Intensity}.";
 
             return Ok(responseMessage);

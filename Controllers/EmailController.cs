@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using email_api.Models; // Certifique-se de que está correto
+using email_api.Models;
 
 namespace email_api.Controllers
 {
@@ -7,7 +7,7 @@ namespace email_api.Controllers
     [Route("[controller]")]
     public class EmailController : ControllerBase
     {
-        private const string RequiredKey = "ausdh12342111haishiasaaaiuhiudsfhh"; // A chave constante
+        private const string RequiredKey = "ausdh12342111haishiasaaaiuhiudsfhh"; 
 
         [HttpPost]
         public IActionResult Post([FromBody] EmailRequest request)

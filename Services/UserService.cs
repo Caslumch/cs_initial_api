@@ -9,8 +9,8 @@ namespace email_api.Services
 
         public UserService(IMongoClient mongoClient)
         {
-            var database = mongoClient.GetDatabase("YourDatabaseName"); // Substitua pelo nome do seu banco de dados
-            _users = database.GetCollection<User>("Users"); // Nome da coleção
+            var database = mongoClient.GetDatabase("YourDatabaseName"); 
+            _users = database.GetCollection<User>("Users"); 
         }
 
         public async Task CreateUserAsync(User user)

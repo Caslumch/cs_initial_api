@@ -1,28 +1,23 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MongoDB.Driver; // Adicione o namespace MongoDB.Driver
-using email_api.Models; // Substitua pelo namespace correto dos seus modelos
+using MongoDB.Driver;
+using email_api.Models; 
 using email_api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Adiciona suporte a controllers
 builder.Services.AddControllers();
 
-// Configura o cliente MongoDB
 var mongoConnectionString = builder.Configuration.GetConnectionString("MongoDB");
 builder.Services.AddSingleton<IMongoClient>(new MongoClient(mongoConnectionString));
 
-// Registra o UserService
 builder.Services.AddSingleton<UserService>();
 
-// Adiciona suporte a documentação Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configura o pipeline de requisição HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -31,7 +26,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseRouting();
 app.UseAuthorization();
-app.MapControllers(); // Mapeia controllers
+app.MapControllers(); 
 
 var summaries = new[] {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
