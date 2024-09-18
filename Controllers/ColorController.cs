@@ -6,10 +6,24 @@ namespace SeuNamespace.Controllers
     [Route("[controller]")]
     public class ColorController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult Get()
+        [HttpPost]
+        public IActionResult Post([FromBody] ColorRequest request)
         {
-            return Ok("essa é a cor ta");
+            // Adicione condições com base nos dados recebidos
+            if (request == null)
+            {
+                return BadRequest("Dados inválidos.");
+            }
+
+            if (string.IsNullOrEmpty(request.ColorName))
+            {
+                return BadRequest("O nome da cor é obrigatório.");
+            }
+
+            // Processar os dados
+            string responseMessage = $"A cor {request.ColorName} tem intensidade {request.Intensity}.";
+
+            return Ok(responseMessage);
         }
     }
 }
